@@ -1,13 +1,14 @@
+import { Character } from "../model/character"
 import { CharacterCard } from "./character-card"
 
 interface characterListProps{
-    characters: []
+    characters: Character[]
 }
 
 export function CharacterList(props: characterListProps){
     return (
     <>
-    {props.characters.map((character) => (
+    {props.characters.map((character: Character) => (
         <CharacterCard 
         name={character.name} 
         id={0} 
@@ -15,8 +16,9 @@ export function CharacterList(props: characterListProps){
         species={character.species} 
         gender={character.gender} 
         image={character.image} 
-        location={character.location} 
-        episode={character.episode}        
+        //location={character.location} 
+        //episode={character.episode}        
+        //
         />
     ))}
     </>
