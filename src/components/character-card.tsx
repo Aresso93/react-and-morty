@@ -15,6 +15,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useState } from 'react';
+import { Origin } from '../model/character';
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -27,6 +28,7 @@ interface characterCardProps{
     species: string;
     gender: string;
     image: string;
+    origin: Origin;
     location: Location
     episode: string[];
 }
@@ -51,7 +53,7 @@ export function CharacterCard(props: characterCardProps){
       };
     
       return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 345 }} className='character-card'>
           <CardHeader
             action={
               <IconButton aria-label="settings">
@@ -63,7 +65,7 @@ export function CharacterCard(props: characterCardProps){
           />
           <CardMedia
             component="img"
-            height="250"
+            height="350"
             image={props.image}
             alt="Paella dish"
           />
@@ -72,7 +74,7 @@ export function CharacterCard(props: characterCardProps){
              <div className='character-information'>
                 <span>Species: {props.species}</span>
                 <span>Gender: {props.gender}</span>
-                <span>Origin: {props.location.name}</span>
+                <span>Origin: {props.origin?.name}</span>
              </div>
           
           </CardContent>

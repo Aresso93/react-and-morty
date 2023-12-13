@@ -1,28 +1,30 @@
-import { Character } from "../model/character"
-import { CharacterCard } from "./character-card"
+import React from "react";
+import { Character } from "../model/character";
+import { CharacterCard } from "./character-card";
 
-interface characterListProps{
-    characters: Character[]
+interface characterListProps {
+  characters: Character[];
 }
 
-export function CharacterList(props: characterListProps){
-    return (
+export function CharacterList(props: characterListProps) {
+  return (
     <>
-    {props.characters?.map((character: Character) => (
-        <div key={character.id}>
-
-        <CharacterCard 
-        name={character.name} 
-        id={0} 
-        status={character.status} 
-        species={character.species} 
-        gender={character.gender} 
-        image={character.image} 
-        location={[]} 
-        episode={[]}        
-        />
-        </div>
-    ))}
+    <div className="card-container">
+      {props.characters?.map((character: Character) => (
+        <React.Fragment key={character.id}>
+          <CharacterCard
+            name={character.name}
+            id={0}
+            status={character.status}
+            species={character.species}
+            gender={character.gender}
+            image={character.image}
+            location={[]}
+            episode={[]}
+          />
+        </React.Fragment>
+      ))}
+      </div>
     </>
-    )
+  );
 }
