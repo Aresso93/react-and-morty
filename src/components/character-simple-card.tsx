@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -31,7 +31,6 @@ interface characterCardProps {
 }
 
 export function CharacterSimpleCard(props: characterCardProps) {
-
   return (
     <Card sx={{ maxWidth: 345 }} className="character-card">
       <CardHeader
@@ -50,15 +49,17 @@ export function CharacterSimpleCard(props: characterCardProps) {
       />
       <CardContent></CardContent>
       <CardActions disableSpacing>
-       <Button variant="contained"
-       onClick={()=>{
-        console.log(props.id);
-        
-       }}
-       >AAAAAAA
-       </Button>
+        <div className="card-buttons">
+          <Button
+            variant="contained"
+            onClick={() => {
+              console.log(props.id);
+            }}
+          >
+            See character details
+          </Button>
+        </div>
       </CardActions>
-   
     </Card>
   );
 }
