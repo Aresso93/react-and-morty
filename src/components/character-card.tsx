@@ -5,7 +5,7 @@ interface characterCardProps{
     species: string;
     gender: string;
     image: string;
-    location: Location
+    location: []
     episode: [];
 }
 

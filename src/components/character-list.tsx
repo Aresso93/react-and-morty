@@ -8,7 +8,9 @@ interface characterListProps{
 export function CharacterList(props: characterListProps){
     return (
     <>
-    {props.characters.map((character: Character) => (
+    {props.characters?.map((character: Character) => (
+        <div key={character.id}>
+
         <CharacterCard 
         name={character.name} 
         id={0} 
@@ -16,10 +18,10 @@ export function CharacterList(props: characterListProps){
         species={character.species} 
         gender={character.gender} 
         image={character.image} 
-        //location={character.location} 
-        //episode={character.episode}        
-        //
+        location={[]} 
+        episode={[]}        
         />
+        </div>
     ))}
     </>
     )
