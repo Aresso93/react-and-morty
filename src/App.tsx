@@ -3,6 +3,8 @@ import './App.css'
 import { CharacterList } from './components/character-list'
 import { useRickAndMortyApi } from './services/rick-and-morty-api'
 import RickHeader from './components/header'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { CharacterCard } from './components/character-card'
 
 function App() {
 
@@ -16,10 +18,39 @@ function App() {
 
   return (
     <>
-    <RickHeader></RickHeader>
-     <CharacterList
-     characters={rickApi.states.characters}
-     />
+    <BrowserRouter>
+    <RickHeader/>
+    <Routes>
+
+    <Route
+    path='home'
+    element={
+      <CharacterList
+      characters={rickApi.states.characters}
+      />
+    }
+    >
+      </Route>
+    <Route
+    path='details/:characterID'
+    element={
+      <CharacterCard
+        id={rickApi.states.singleCharacter.id} 
+        name={''} 
+        status={''} 
+        species={''} 
+        gender={''} 
+        image={''} 
+        origin={undefined} 
+        location={undefined}
+        episode={[]}      />
+    }
+    >
+    </Route>
+    <Route path="*" element={<Navigate to="/home" />} />
+      </Routes>
+   
+     </BrowserRouter>
     </>
   )
 }

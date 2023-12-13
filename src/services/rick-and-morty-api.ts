@@ -3,7 +3,15 @@ import { useAxios } from "./use-axios";
 
 export function useRickAndMortyApi(){
     const axios = useAxios()
-    const [characters, setCharacters] = useState()
+    const [characters, setCharacters] = useState([])
+    const [singleCharacter, setSingleCharacter] = useState({
+        name: '',
+        id: 0,
+        image: '',
+        gender: '',
+        episode: [],
+        location: {name: '', url: ''}
+    })
 
     async function getCharacters(){
         const characterResp = await axios("/character")
@@ -11,12 +19,20 @@ export function useRickAndMortyApi(){
         setCharacters(characterResp.data.results)
     }
 
+    async function getSingleCharacter(characterID: number){
+        const singleCharacterResp = await axios("/character/"+characterID);
+        console.log('BBBB', singleCharacterResp.data);
+        setSingleCharacter(singleCharacterResp.data)
+    }
+
     return {
         actions:{
-            getCharacters
+            getCharacters,
+            getSingleCharacter
         },
         states:{
-            characters
+            characters,
+            singleCharacter
         }
     }
 
