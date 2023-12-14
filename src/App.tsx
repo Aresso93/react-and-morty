@@ -5,6 +5,7 @@ import { useRickAndMortyApi } from './services/rick-and-morty-api'
 import RickHeader from './components/header'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { CharacterCard } from './components/character-card'
+import TestCard from './components/test-card'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
     <>
     <BrowserRouter>
     <RickHeader/>
+    <TestCard/>
     <Routes>
 
     <Route
@@ -37,12 +39,12 @@ function App() {
       <CharacterCard
         id={rickApi.states.singleCharacter.id} 
         name={rickApi.states.singleCharacter.name} 
-        //status={rickApi.states.singleCharacter.status} 
-        //species={rickApi.states.singleCharacter.species} 
+        status={rickApi.states.singleCharacter.status} 
+        species={rickApi.states.singleCharacter.species} 
         gender={rickApi.states.singleCharacter.gender} 
         image={rickApi.states.singleCharacter.image} 
-        //origin={undefined} 
-        //location={undefined}
+        origin={undefined} 
+        location={undefined}
         episode={[]}      />
     }
     >

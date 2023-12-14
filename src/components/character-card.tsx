@@ -16,6 +16,7 @@ import { Origin } from '../model/character';
 import { useRickAndMortyApi } from '../services/rick-and-morty-api';
 import { useAxios } from '../services/use-axios';
 import { useParams } from 'react-router-dom';
+import TestCard from './test-card';
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -71,6 +72,11 @@ export function CharacterCard(props: characterCardProps){
       };
     
       return (
+        <>
+       
+        <TestCard/>
+        <div className='card-div'>
+
         <Card sx={{ maxWidth: 345 }} className='character-card'>
           <CardHeader
             action={
@@ -86,7 +92,7 @@ export function CharacterCard(props: characterCardProps){
             height="500"
             width = "500"
             image={character.image}
-            alt="Paella dish"
+            alt={character.name}
           />
           <CardContent>
            
@@ -143,6 +149,8 @@ export function CharacterCard(props: characterCardProps){
             </CardContent>
           </Collapse>
         </Card>
+        </div>
+        </>
       );
   
 }

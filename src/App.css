@@ -5,43 +5,28 @@
   text-align: center;
 } */
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
 body, html {
   box-sizing: border-box;
 }
 
-.card {
-  padding: 2em;
-}
+
 
 .character-card{
   padding: 4px;
   margin: 8px;
-  width: 48%;
-  
+}
+
+.card-div{
+  display: flex;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  width: 100%;
 }
 
 .character-information{
   display: flex;
   flex-direction: column;
-}
-
-.read-the-docs {
-  color: #888;
 }
 
 .card-buttons{

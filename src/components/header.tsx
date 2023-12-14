@@ -8,12 +8,12 @@ import IconButton from '@mui/material/IconButton';
 export default function RickHeader() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="absolute">
         <Toolbar>
           <IconButton
             size="large"
             edge="start"
-            color="inherit"
+            color="info"
             aria-label="menu"
             sx={{ mr: 2 }}
           >
