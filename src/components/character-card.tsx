@@ -11,8 +11,11 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Origin } from '../model/character';
+import { useRickAndMortyApi } from '../services/rick-and-morty-api';
+import { useAxios } from '../services/use-axios';
+import { useParams } from 'react-router-dom';
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -31,6 +34,26 @@ interface characterCardProps{
 }
 
 export function CharacterCard(props: characterCardProps){
+    const axios = useAxios()
+    const {characterID} = useParams()
+    const [character, setCharacter] = useState({
+      name: '',
+      id: 0,
+      status: '',
+      species: '',
+      gender: '',
+      image: '',
+      origin: '',
+      location: Location,
+      episode: []
+    })
+    const rickApi = useRickAndMortyApi()
+
+    useEffect(() => {
+      axios.get("https://rickandmortyapi.com/api/character/"+characterID)
+      .then((resp) => setCharacter(resp.data))
+    })
+
     const [expanded, setExpanded] = useState(false);
     const ExpandMore = styled((props: ExpandMoreProps) => {
       const { expand, ...other } = props;
@@ -42,9 +65,7 @@ export function CharacterCard(props: characterCardProps){
         duration: theme.transitions.duration.shortest,
       }),
     }));
-    
-    
-    
+  
       const handleExpandClick = () => {
         setExpanded(!expanded);
       };
@@ -57,21 +78,22 @@ export function CharacterCard(props: characterCardProps){
                 <MoreVertIcon />
               </IconButton>
             }
-            title={props.name}
-            subheader={`Status: ${props.status.toLowerCase()}`}
+            title={character.name}
+            subheader={`Status: ${character.status.toLowerCase()}`}
           />
           <CardMedia
             component="img"
-            height="350"
-            image={props.image}
+            height="500"
+            width = "500"
+            image={character.image}
             alt="Paella dish"
           />
           <CardContent>
            
              <div className='character-information'>
-                <span>Species: {props.species}</span>
-                <span>Gender: {props.gender}</span>
-                <span>Origin: {props.origin?.name}</span>
+                <span>Species: {character.species}</span>
+                <span>Gender: {character.gender}</span>
+                <span>Origin: {character.origin?.name}</span>
              </div>
           
           </CardContent>

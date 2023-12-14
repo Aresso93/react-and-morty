@@ -7,6 +7,7 @@ import CardActions from "@mui/material/CardActions";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Origin } from "../model/character";
+import { useNavigate } from "react-router-dom";
 
 interface characterCardProps {
   name: string;
@@ -21,6 +22,9 @@ interface characterCardProps {
 }
 
 export function CharacterSimpleCard(props: characterCardProps) {
+
+  const navigate = useNavigate()
+
   return (
     <Card sx={{ maxWidth: 345 }} className="character-card">
       <CardHeader
@@ -43,7 +47,7 @@ export function CharacterSimpleCard(props: characterCardProps) {
           <Button
             variant="contained"
             onClick={() => {
-              
+              navigate(`/details/${props.id}`)
             }}
           >
             See character details

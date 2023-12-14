@@ -36,13 +36,13 @@ function App() {
     element={
       <CharacterCard
         id={rickApi.states.singleCharacter.id} 
-        name={''} 
-        status={''} 
-        species={''} 
-        gender={''} 
-        image={''} 
-        origin={undefined} 
-        location={undefined}
+        name={rickApi.states.singleCharacter.name} 
+        //status={rickApi.states.singleCharacter.status} 
+        //species={rickApi.states.singleCharacter.species} 
+        gender={rickApi.states.singleCharacter.gender} 
+        image={rickApi.states.singleCharacter.image} 
+        //origin={undefined} 
+        //location={undefined}
         episode={[]}      />
     }
     >
